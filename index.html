@@ -181,13 +181,22 @@
 
         total.textContent = "Total: $" + sumaTotal;
 
-        if (carrito.length > 0) {
-            document.getElementById("formularioPedido").classList.remove("hidden");
+        document.getElementById("formularioPedido").classList.toggle("hidden", carrito.length === 0);
+    }
+
+    function realizarPedido() {
+        let nombre = document.getElementById("nombre").value;
+        let direccion = document.getElementById("direccion").value;
+        if (nombre && direccion) {
+            document.getElementById("mensaje").textContent = "Pedido realizado con éxito.";
+            carrito = [];
+            actualizarCarrito();
         } else {
-            document.getElementById("formularioPedido").classList.add("hidden");
+            alert("Por favor, completa todos los campos.");
         }
     }
 </script>
 
 </body>
 </html>
+
